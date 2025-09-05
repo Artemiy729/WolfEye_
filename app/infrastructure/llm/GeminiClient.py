@@ -7,8 +7,9 @@ from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 
 
-class LLMCore:
+class GeminiClient:
     def __init__(self, *, pool_connections: int = 10, pool_maxsize: int = 50, timeout: float = 10.0):
+        print("SIII!")
         self._ENDPOINT = "https://api.proxyapi.ru/google/v1beta/models/gemini-2.0-flash:generateContent"
         # keep-alive по умолчанию включён у requests; явно не вредно
         self._headers = {

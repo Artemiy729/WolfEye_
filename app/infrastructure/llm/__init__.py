@@ -1,10 +1,10 @@
-from .LLMCore import LLMCore
+from .GeminiClient import GeminiClient
 from .prompts.fio import FIO_PROMPT
 from app.domain.models import FIOResult, NameParts
 
 
 
-class LLM(LLMCore):
+class LLM(GeminiClient):
     
     def checking_FIO(self, data: NameParts) -> FIOResult:
         GENCFG = {
@@ -23,3 +23,9 @@ class LLM(LLMCore):
     def analysis_of_legend(self, text: str, patterns: dict[int, str]) -> int:
         # Анализ легенды резюме на предмет накрутки (мок — 1)
         return 1
+
+_llm = LLM()
+
+
+def get_llm() -> LLM:
+    return _llm
