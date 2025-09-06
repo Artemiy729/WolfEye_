@@ -1,38 +1,62 @@
 from __future__ import annotations
 from datetime import date
-from typing import Optional, List, Dict
-from pydantic import BaseModel, Field
+from typing import Optional, List, Dict, ClassVar
+from pydantic import BaseModel, Field, field_validator
 
 
 class FIOResult(BaseModel):
-    name: bool
-    surname: bool
-    father_name: bool
+    name: int
+    surname: int
+    father_name: int
+    
+    ALLOWED: ClassVar[set[int]] = {0, 1, 2, 4}
+    
     @staticmethod
-    def _parse_flags(s: str) -> Dict[str, bool]:
+    def _parse_flags(s: str) -> Dict[str, int]:
         s = s.strip()
-        if len(s) != 3 or any(ch not in "01" for ch in s):
+        if len(s) != 3 or any(ch not in "0124" for ch in s):
             raise ValueError(
-                "Ожидается строка из 3 символов '0'/'1', например: '101'."
+                "Ожидается строка из трёх символов из {0,1,2,4}, например: '024'."
             )
         return {
-            "name": s[0] == "1",
-            "surname": s[1] == "1",
-            "father_name": s[2] == "1",
+            "surname": int(s[0]),
+            "name": int(s[1]),
+            "father_name": int(s[2]),
         }
 
     def __init__(self, *args, **kwargs):
-        # Разрешаем вызов FIOResult("101")
+        # Разрешаем вызов FIOResult("024")
         if args and isinstance(args[0], str) and not kwargs:
             kwargs = self._parse_flags(args[0])
         elif args:
             # Запрещаем позиционные аргументы помимо единственной строки
             raise TypeError(
-                "Используйте FIOResult('101') или именованные аргументы: "
-                "FIOResult(name=True, surname=False, father_name=True)."
+                "Используйте FIOResult('024') или именованные аргументы: "
+                "FIOResult(name=0, surname=2, father_name=4)."
             )
         super().__init__(**kwargs)
+        
+    @field_validator("surname", "name", "father_name", mode="before")
+    @classmethod
+    def _force_and_check(cls, v):
+        # принимаем и '0'/'1'/'2'/'4', и int
+        if isinstance(v, str):
+            if v not in {"0", "1", "2", "4"}:
+                raise ValueError(f"Значение должно быть одним из {cls.ALLOWED}, получено {v!r}")
+            v = int(v)
+        if not isinstance(v, int):
+            raise TypeError("Ожидается целое число из {0,1,2,4}")
+        if v not in cls.ALLOWED:
+            raise ValueError(f"Значение должно быть одним из {cls.ALLOWED}, получено {v}")
+        return v
 
+    # @property
+    # def triple(self) -> str:
+    #     return f"{self.surname}{self.name}{self.father_name}"
+
+    def suspicion_score(self) -> float:
+        s = self.surname + self.name + self.father_name
+        return min(1.0, s / 5.0)
 
 class NameParts(BaseModel):
     surname: str = Field(..., description="Фамилия")
