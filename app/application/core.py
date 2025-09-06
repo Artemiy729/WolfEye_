@@ -1,4 +1,4 @@
-from app.application.services.born import when_start_workig
+from app.application.services.born import when_start_working
 from app.application.services.city import compare_cities
 from app.application.services.fio import analysis_fio
 from app.application.services.legend import analysis_legend
