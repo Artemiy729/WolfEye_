@@ -1,7 +1,7 @@
 from app.domain.models import NameParts, Education, EducationEntry
 from app.application.services.fio import analysis_fio
 from app.application.services.born import when_start_working
-from app.application.services.study import analyze_education
+from app.application.services.higher import analyze_education
 from datetime import date
 import time
 
