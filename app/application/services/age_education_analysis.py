@@ -156,7 +156,6 @@ def _calculate_education_bonus(
     years_diff = first_work.year - education_start.year
     
     # Учитываем месяц для более точного расчета
-    # ИСПРАВЛЕНИЕ БАГА: если работа началась до сентября, считаем как предыдущий год
     if first_work.month < 9:  # до сентября
         years_diff -= 1
     
@@ -216,5 +215,3 @@ def _is_education_finished(edu_entry: EducationEntry) -> bool:
     return edu_entry.end_date <= date.today()
 
 
-# Обратная совместимость - алиас для старого имени функции
-analyze_education_comprehensive = analyze_age_education_comprehensive
