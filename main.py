@@ -1,4 +1,5 @@
-from app.domain.models import NameParts, Education, EducationEntry
+from app.application.services.company import analyze_company
+from app.domain.models import NameParts, Education, EducationEntry, PlaceWork
 from app.application.services.fio import analysis_fio, calculate_suspicion_score
 from app.application.services.age_education_analysis import when_start_working, analyze_age_education_comprehensive
 from app.application.services.higher import analyze_education
@@ -14,7 +15,7 @@ def main():
     fio_result = analysis_fio(NameParts(surname="Смиpнов", name="Александр", father_name="Вячеславович"))
     
     suspicion_score = calculate_suspicion_score(fio_result)
-    print(f"1)ФИО: {fio_result}")
+    print(f"ФИО: {fio_result}")
     print(f"Коэффициент подозрительности: {suspicion_score:.3f}")
    
     
@@ -60,7 +61,7 @@ def main():
     
     
     
-    #  3) Дата рождения + образование - НОРМАЛЬНЫЙ СЛУЧАЙ
+    #  3. Анализ Дата рождения + образование - НОРМАЛЬНЫЙ СЛУЧАЙ
     
     comprehensive_score = analyze_age_education_comprehensive(
         born=date(1995, 1, 1),
@@ -89,7 +90,7 @@ def main():
     
     suspicious_score = analyze_age_education_comprehensive(
         born=None,  # Нет даты рождения
-        first_work=date(2015, 1, 1),  # Работа в 15 лет (если бы была дата рождения)
+        first_work=date(2015, 1, 1),  
         education=suspicious_education,
         residence_city="Москва"  # Другой город
     )
@@ -100,8 +101,20 @@ def main():
     print(f"Город проживания: Москва")
     print(f"Итоговый коэффициент подозрительности: {suspicious_score:.3f}")
     
+    ### 4. Анализ компании
+    ### Нет компании
+    suspicious_company = PlaceWork(company=None)
+    suspicious_company_score = analyze_company(suspicious_company)
     
+    print(f"Компания: нет")
+    print(f"Коэффициент подозрительности: {suspicious_company_score:.3f}")
     
+    ### Есть компания
+    normal_company = PlaceWork(company="ООО 'Рога и копыта'")
+    normal_company_score = analyze_company(normal_company)
+    
+    print(f"Компания: ООО 'Рога и копыта'")
+    print(f"Коэффициент подозрительности: {normal_company_score:.3f}")
     
 
 if __name__ == "__main__":
