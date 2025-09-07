@@ -5,7 +5,7 @@ from app.infrastructure.llm import get_llm
 
 
 
-def calculate_suspicion_score(fio_result: FIOResult) -> float:
+def _calculate_suspicion_score(fio_result: FIOResult) -> float:
     """
     Рассчитывает коэффициент подозрительности ФИО.
     
@@ -19,14 +19,14 @@ def calculate_suspicion_score(fio_result: FIOResult) -> float:
     return min(1.0, s / 5.0)
 
 
-def has_visual_substitution(name: str) -> bool:
+def _has_visual_substitution(name: str) -> bool:
     """Проверяет, есть ли хотя бы одна визуальная подмена в строке"""
     suspicious_chars = 'aoepcyxABEKMHOPCTYX'
 
     return any(char in suspicious_chars for char in name)
 
 
-def analysis_fio(data: NameParts) -> FIOResult:
+def _analysis_fio(data: NameParts) -> FIOResult:
     """
     Анализирует ФИО с помощью LLM.
     
@@ -37,9 +37,9 @@ def analysis_fio(data: NameParts) -> FIOResult:
         FIOResult: Результат анализа ФИО
     """
     # Проверяем каждую часть отдельно на визуальную подмену
-    surname_has_substitution = has_visual_substitution(data.surname)
-    name_has_substitution = has_visual_substitution(data.name)
-    father_name_has_substitution = has_visual_substitution(data.father_name)
+    surname_has_substitution = _has_visual_substitution(data.surname)
+    name_has_substitution = _has_visual_substitution(data.name)
+    father_name_has_substitution = _has_visual_substitution(data.father_name)
     
     if (surname_has_substitution and name_has_substitution and father_name_has_substitution):
         return FIOResult("444")
@@ -59,3 +59,12 @@ def analysis_fio(data: NameParts) -> FIOResult:
     if (father_name_has_substitution):
         father_name_result = 4
     return FIOResult(str(surname_result) + str(name_result) + str(father_name_result))
+
+
+def check_fio(data: NameParts) -> float:
+    fio_result = _analysis_fio(data)
+    return _calculate_suspicion_score(fio_result)
+
+
+if __name__ == "__main__":
+    print(check_fio(NameParts(surname="Лызь", name="Дмитрий", father_name="Михайлович")))

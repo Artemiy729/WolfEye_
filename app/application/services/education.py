@@ -72,28 +72,6 @@ def _is_education_basic_complete(edu_entry: EducationEntry) -> bool:
     )
 
 
-def _is_education_complete(edu_entry: EducationEntry) -> bool:
-    """
-    Проверяет, полностью ли заполнены данные об образовании.
-    
-    Проверяет наличие:
-    - университет
-    - город
-    - факультет/специальность
-    - дата окончания
-    
-    Args:
-        edu_entry: Запись об образовании для проверки
-    
-    Returns:
-        bool: True если все поля заполнены, False иначе
-    """
-    return (
-        _is_education_basic_complete(edu_entry) and
-        edu_entry.end_date is not None
-    )
-
-
 def _is_education_finished(edu_entry: EducationEntry) -> bool:
     """
     Проверяет, окончено ли образование.
