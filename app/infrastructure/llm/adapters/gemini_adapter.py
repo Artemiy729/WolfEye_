@@ -1,4 +1,6 @@
 from __future__ import annotations
+from typing import Optional, Dict, Any
+from app.infrastructure.llm.llm_client import LLMClient
 from app.config import CONFIG
 
 import json
@@ -7,8 +9,21 @@ from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 
 
-class GeminiClient:
+class GeminiAdapter(LLMClient):
+    """
+    Реализация LLMClient для работы с Gemini API.
+    Содержит всю логику для HTTP-запросов, ретраев и обработки ответов.
+    """
+    
     def __init__(self, *, pool_connections: int = 10, pool_maxsize: int = 50, timeout: float = 10.0):
+        """
+        Инициализирует адаптер для работы с Gemini API.
+        
+        Args:
+            pool_connections: Количество соединений в пуле
+            pool_maxsize: Максимальный размер пула соединений
+            timeout: Таймаут для запросов
+        """
         print("SIII!")
         self._ENDPOINT = "https://api.proxyapi.ru/google/v1beta/models/gemini-2.0-flash:generateContent"
         # keep-alive по умолчанию включён у requests; явно не вредно
@@ -40,24 +55,29 @@ class GeminiClient:
         # HTTP и HTTPS — один и тот же адаптер
         self._session.mount("http://", adapter)
         self._session.mount("https://", adapter)
-
-    def __del__(self):
-        # закроем сессию при сборке мусора (на всякий). Лучше вызывать явно .close()
-        try:
-            self._session.close()
-        except Exception:
-            pass
-
-    def close(self):
-        """Явное закрытие сессии, если нужно."""
-        self._session.close()
-
-    def _call_gemini(self, system_prompt: str, user_text: str, GENCFG: dict | None = None):
+    
+    def generate_content(
+        self, 
+        system_prompt: str, 
+        user_text: str, 
+        generation_config: Optional[Dict[str, Any]] = None
+    ) -> Optional[str]:
+        """
+        Генерирует контент через Gemini API.
+        
+        Args:
+            system_prompt: Системный промпт
+            user_text: Пользовательский текст
+            generation_config: Конфигурация генерации
+            
+        Returns:
+            Optional[str]: Сгенерированный текст или None в случае ошибки
+        """
         # Подготовим payload один раз как str -> экономим на encode в urllib3
         payload = json.dumps({
             "systemInstruction": {"parts": [{"text": system_prompt}]},
             "contents": [{"parts": [{"text": user_text}]}],
-            "generationConfig": GENCFG,
+            "generationConfig": generation_config,
         }, ensure_ascii=False)
 
         try:
@@ -81,3 +101,18 @@ class GeminiClient:
             return None
 
         return text
+    
+    def close(self) -> None:
+        """
+        Закрывает соединения.
+        """
+        self._session.close()
+    
+    def __del__(self):
+        """
+        Деструктор для автоматического закрытия соединений.
+        """
+        try:
+            self._session.close()
+        except Exception:
+            pass

@@ -12,7 +12,7 @@ def main():
     
     # 1. Анализ ФИО
     
-    fio_result = analysis_fio(NameParts(surname="Смиpнов", name="Александр", father_name="Вячеславович"))
+    fio_result = analysis_fio(NameParts(surname="Смирнов", name="ываыва", father_name="Петрович"))
     
     suspicion_score = calculate_suspicion_score(fio_result)
     print(f"ФИО: {fio_result}")
