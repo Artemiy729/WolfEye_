@@ -1,7 +1,8 @@
 from app.domain.models import Education, EducationEntry
+from app.application.services.city import compare_cities
 
 
-def analyze_education(education: Education, residence_city: str) -> int:
+def analyze_education(education: Education, residence_city: str) -> float:
     """
     Анализирует данные о ВУЗе.
     
@@ -21,12 +22,12 @@ def analyze_education(education: Education, residence_city: str) -> int:
         residence_city: Город проживания
     
     Returns:
-        float: Вероятность
+        float: Вероятность подозрительности от 0.0 до 1.0
     """
     
     # Проверяем, есть ли данные об образовании
     if not education or not education.items:
-        return 1  # Нет данных об образовании
+        return 1 
     
     # Берем первое (основное) образование
     edu_entry = education.items[0]
@@ -38,10 +39,12 @@ def analyze_education(education: Education, residence_city: str) -> int:
     # Проверяем, окончено ли образование
     if not _is_education_finished(edu_entry):
         # Образование не окончено, проверяем совпадение городов
-        if not _cities_match(residence_city, edu_entry.city):
+        if not compare_cities(residence_city, edu_entry.city):
             return 0.75  # Не окончено и город не совпадает с проживанием
+        else:
+            return 0  # Не окончено, но город совпадает с проживанием
     
-    return 0  
+    return 0  # Образование окончено  
 
 
 def _is_education_basic_complete(edu_entry: EducationEntry) -> bool:
@@ -52,6 +55,12 @@ def _is_education_basic_complete(edu_entry: EducationEntry) -> bool:
     - университет
     - город
     - факультет/специальность
+    
+    Args:
+        edu_entry: Запись об образовании для проверки
+    
+    Returns:
+        bool: True если все базовые поля заполнены, False иначе
     """
     return (
         edu_entry.university is not None and 
@@ -72,6 +81,12 @@ def _is_education_complete(edu_entry: EducationEntry) -> bool:
     - город
     - факультет/специальность
     - дата окончания
+    
+    Args:
+        edu_entry: Запись об образовании для проверки
+    
+    Returns:
+        bool: True если все поля заполнены, False иначе
     """
     return (
         _is_education_basic_complete(edu_entry) and
@@ -84,6 +99,12 @@ def _is_education_finished(edu_entry: EducationEntry) -> bool:
     Проверяет, окончено ли образование.
     
     Считается оконченным, если указана дата окончания и она в прошлом.
+    
+    Args:
+        edu_entry: Запись об образовании для проверки
+    
+    Returns:
+        bool: True если образование окончено, False иначе
     """
     if edu_entry.end_date is None:
         return False
@@ -92,16 +113,3 @@ def _is_education_finished(edu_entry: EducationEntry) -> bool:
     return edu_entry.end_date < date.today()
 
 
-def _cities_match(residence_city: str, education_city: str) -> bool:
-    """
-    Проверяет, совпадают ли города проживания и обучения.
-    
-    Сравнение происходит без учета регистра и лишних пробелов.
-    """
-    if not residence_city or not education_city:
-        return False
-    
-    residence_clean = residence_city.strip().lower()
-    education_clean = education_city.strip().lower()
-    
-    return residence_clean == education_clean

@@ -1,17 +1,23 @@
-from datetime import date
-
-
-def compare_cities(city_of_residence: str, city_of_learning: str, end_university: date|None) -> bool:
+def compare_cities(residence_city: str, education_city: str) -> bool:
     """
-    Сравнивает города проживания и обучения.
+    Проверяет, совпадают ли города проживания и обучения.
+    
+    Сравнение происходит без учета регистра и лишних пробелов.
     
     Args:
-        city_of_residence: Город проживания
-        city_of_learning: Город обучения
-        end_university: Дата окончания университета (не используется в текущей реализации)
+        residence_city: Город проживания
+        education_city: Город обучения
     
-    Return:
+    
+    Returns:
         bool: True если города совпадают, False иначе
     """
-    # Мок: считаем совпадающими, если строки равны
-    return (city_of_residence or "").strip().lower() == (city_of_learning or "").strip().lower()
+    if not residence_city or not education_city:
+        return False
+    
+    residence_clean = residence_city.strip().lower()
+    education_clean = education_city.strip().lower()
+    
+    return residence_clean == education_clean
+
+

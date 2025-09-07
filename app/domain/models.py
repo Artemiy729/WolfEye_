@@ -51,9 +51,6 @@ class FIOResult(BaseModel):
         return v
 
 
-    def suspicion_score(self) -> float:
-        s = self.surname + self.name + self.father_name
-        return min(1.0, s / 5.0)
 
 class NameParts(BaseModel):
     surname: str = Field(..., description="Фамилия")
