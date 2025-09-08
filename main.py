@@ -4,7 +4,7 @@ from app.application.services.fio import check_fio
 def main():
     
     
-    print(check_fio(NameParts(surname="Лызь", name="Дмитрий", father_name="Михайлович")))
+    print(check_fio(NameParts(surname="Джун", name="Дмитрий", father_name="Михайлович")))
 
 if __name__ == "__main__":
     main()

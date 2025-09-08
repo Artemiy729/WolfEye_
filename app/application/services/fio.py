@@ -1,6 +1,6 @@
 from app.domain.models import FIOResult, NameParts
 from app.infrastructure.llm import get_llm
-
+from app.application.services.translit import has_visual_substitution
 
 
 
@@ -19,46 +19,41 @@ def _calculate_suspicion_score(fio_result: FIOResult) -> float:
     return min(1.0, s / 5.0)
 
 
-def _has_visual_substitution(name: str) -> bool:
-    """Проверяет, есть ли хотя бы одна визуальная подмена в строке"""
-    suspicious_chars = 'aoepcyxABEKMHOPCTYX'
-
-    return any(char in suspicious_chars for char in name)
 
 
 def _analysis_fio(data: NameParts) -> FIOResult:
-    """
-    Анализирует ФИО с помощью LLM.
-    
+    """Анализирует ФИО с помощью LLM.
     Args:
-        data: Данные ФИО для анализа
+        data: Фамилия, имя, отчество
         
     Returns:
-        FIOResult: Результат анализа ФИО
+        FIOResult: Итоговые значения (баллы) для каждой части из NameParts
     """
-    # Проверяем каждую часть отдельно на визуальную подмену
-    surname_has_substitution = _has_visual_substitution(data.surname)
-    name_has_substitution = _has_visual_substitution(data.name)
-    father_name_has_substitution = _has_visual_substitution(data.father_name)
     
-    if (surname_has_substitution and name_has_substitution and father_name_has_substitution):
+    # Проверяем визуальную подмену для каждой части
+    surname_sub = has_visual_substitution(data.surname)
+    name_sub = has_visual_substitution(data.name)
+    father_sub = has_visual_substitution(data.father_name)
+    
+    # Если все части имеют подмену - сразу возвращаем 444
+    if surname_sub and name_sub and father_sub:
         return FIOResult("444")
     
+    # Пропускаем LLM если нет отчества и есть подмена в имени/фамилии
+    if not data.father_name.strip() and (surname_sub or name_sub):
+        surname_result = 4 if surname_sub else 0
+        name_result = 4 if name_sub else 0
+        return FIOResult(f"{surname_result}{name_result}1")
 
-    llm = get_llm()
-
-    final_result = llm.checking_FIO(data)
-    surname_result = final_result.surname
-    name_result = final_result.name
-    father_name_result = final_result.father_name
     
-    if (surname_has_substitution):
-        surname_result = 4
-    if (name_has_substitution):
-        name_result = 4
-    if (father_name_has_substitution):
-        father_name_result = 4
-    return FIOResult(str(surname_result) + str(name_result) + str(father_name_result))
+    llm_result = get_llm().checking_FIO(data)
+    
+    # Применяем визуальную подмену поверх LLM результата
+    surname_result = 4 if surname_sub else llm_result.surname
+    name_result = 4 if name_sub else llm_result.name
+    father_result = 4 if father_sub else llm_result.father_name
+    
+    return FIOResult(f"{surname_result}{name_result}{father_result}")
 
 
 def check_fio(data: NameParts) -> float:
