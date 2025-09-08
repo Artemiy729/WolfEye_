@@ -50,13 +50,7 @@ class FIOResult(BaseModel):
             raise ValueError(f"Значение должно быть одним из {cls.ALLOWED}, получено {v}")
         return v
 
-    # @property
-    # def triple(self) -> str:
-    #     return f"{self.surname}{self.name}{self.father_name}"
 
-    def suspicion_score(self) -> float:
-        s = self.surname + self.name + self.father_name
-        return min(1.0, s / 5.0)
 
 class NameParts(BaseModel):
     surname: str = Field(..., description="Фамилия")
