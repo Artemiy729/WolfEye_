@@ -5,14 +5,15 @@ from app.application.services.fio import check_fio
 
 from app.domain.models import Rezume
 
-### Пока неизвестна функция финального просчета, поэтому решил пока оставить как есть
+
 class CoreML:
     def __init__(self):
         pass
 
     def get_score(self, rezume: Rezume) -> int:
         fio_score = check_fio(rezume.fio)
-        age_education_score = analyze_age_education_comprehensive(rezume.born_date, rezume.first_work, rezume.education)
+        first_work = rezume.places[-1].start_date
+        age_education_score = analyze_age_education_comprehensive(rezume.born_date, first_work, rezume.education)
         education_score = analyze_education(rezume.education, rezume.residence_city)
         company_score = analyze_company(rezume.places)
         
