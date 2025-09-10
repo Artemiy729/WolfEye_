@@ -27,6 +27,7 @@ def main():
             ml = CoreML()
             final_score = ml.get_score(resume)
             print(i, final_score)
+            
     ### Прогон чистой резюме      
     with open(f"resources/sample_resumes/clean.json", "r") as f:
             data = json.load(f)
@@ -51,11 +52,7 @@ def main():
             
     
     
-<<<<<<< Updated upstream
-    print(check_fio(NameParts(surname="Джун", name="Дмитрий", father_name="Михайлович")))
-=======
 
->>>>>>> Stashed changes
 
 if __name__ == "__main__":
     main()
