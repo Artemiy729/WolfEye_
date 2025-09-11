@@ -1,4 +1,4 @@
-from WolfEye.app.domain.models import NameParts
+from app.domain.models import NameParts
 
 
 def has_visual_substitution(name: str) -> bool:
@@ -18,4 +18,30 @@ def change_to_normal(fio: NameParts) -> NameParts:
         NameParts: Фамилия, имя, отчество после исправления
     """
     suspicious_chars = 'aoepcyxABEKMHOPCTYX'
-    return NameParts(surname=fio.surname.replace(suspicious_chars, ''), name=fio.name.replace(suspicious_chars, ''), father_name=fio.father_name.replace(suspicious_chars, ''))
+    suspicious_chars_dict = {
+        'a': 'а',
+        'o': 'о',
+        'e': 'е',
+        'p': 'р',
+        'c': 'с',
+        'y': 'у',
+        'x': 'х',
+        'A': 'А',
+        'B': 'В',
+        'E': 'Е',
+        'K': 'К',
+        'M': 'М',
+        'H': 'Н',
+        'O': 'О',
+        'P': 'Р',
+        'C': 'С',
+        'T': 'Т',
+        'Y': 'У',
+        'X': 'Х',
+    }
+    for char in suspicious_chars:
+        fio.surname = fio.surname.replace(char, suspicious_chars_dict[char])
+        fio.name = fio.name.replace(char, suspicious_chars_dict[char])
+        fio.father_name = fio.father_name.replace(char, suspicious_chars_dict[char])
+        
+    return fio

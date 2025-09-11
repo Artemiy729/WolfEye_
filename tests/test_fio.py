@@ -127,6 +127,9 @@ def test_visual_substitution_partial():
     # Только фамилия с подменой
     result = check_fio(make_fio("Ивaнов Иван Иванович"))
     assert result > 0.6  # 4 + 0 + 0 = 4, 4/5 = 0.8
+    
+    
+
 
 
 
