@@ -11,7 +11,7 @@ def analyze_company(companies: List[PlaceWork]) -> float:
         float: 1 если компания не указана, 0 если указана.
     """
     
-    if len(companies) == 2:
+    if len(companies) > 0:
         return 1
     
     return 0
