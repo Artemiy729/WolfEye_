@@ -1,4 +1,5 @@
 import json
+from app.application.services import age_education_analysis
 from app.application.services.age_education_analysis import analyze_age_education_comprehensive
 from app.application.services.company import analyze_company
 from app.application.services.education import analyze_education
@@ -17,7 +18,7 @@ def main():
             desired_position = data["desired_position"]
             experience_years = data["experience_years"]
             places = [PlaceWork(company=place["company"], start_date=place["start_date"], end_date=place["end_date"], company_info=place["company_info"], position=place["position"], legend=place["legend"]) for place in data["places"]]
-            first_work = data["places"][0]["start_date"]
+            first_work = data["places"][-1]["start_date"]
             education = Education(higher=data["education"]["higher"], items=data["education"]["items"])
             skills = data["skills"]
             about = data["about"]
@@ -38,21 +39,20 @@ def main():
             desired_position = data["desired_position"]
             experience_years = data["experience_years"]
             places = [PlaceWork(company=place["company"], start_date=place["start_date"], end_date=place["end_date"], company_info=place["company_info"], position=place["position"], legend=place["legend"]) for place in data["places"]]
-            first_work = data["places"][0]["start_date"]
+            first_work = data["places"][-1]["start_date"]
             education = Education(higher=data["education"]["higher"], items=data["education"]["items"])
             skills = data["skills"]
             about = data["about"]
         
-            resume = Rezume(fio=fio, born_date=born_date, phone=phone, residence_city=residence_city, desired_position=desired_position, experience_years=experience_years, places=places, first_work=first_work, education=education, skills=skills, about=about)
-            
+            resume = Rezume(fio=fio, born_date=born_date, phone=phone, residence_city=residence_city, desired_position=desired_position, experience_years=experience_years, places=places, education=education, skills=skills, about=about)
             ml = CoreML()
             final_score = ml.get_score(resume)
+            
+            
             print("clean_resume", final_score)
             
             
     
     
-
-
 if __name__ == "__main__":
     main()
