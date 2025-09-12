@@ -1,5 +1,5 @@
-example_resume
-
+create_tables.py
+create_test_user.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
