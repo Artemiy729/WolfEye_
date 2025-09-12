@@ -34,7 +34,8 @@ class LLMService:
             "candidateCount": 1,
             "maxOutputTokens": 3,
             "temperature": 0.0,
-            "topP": 1.0,
+            "topP": 1.0, 
+            "topK": 5,# указал
             "seed": 0,
             "responseMimeType": "text/plain",
         }

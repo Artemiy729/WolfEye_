@@ -1,0 +1,57 @@
+{
+    "fio": {
+    "surname": "",
+    "name": "",
+    "father_name": ""
+    },
+    "born_date": null,
+    "phone": null,
+    "residence_city": "Москва",
+    "desired_position": "Java-разработчик",
+    "experience_years": 3,
+    "places": [
+    {
+        "company": "Гринатом, ЗАО",
+        "start_date": "2024-05-01",
+        "end_date": null,
+        "company_info": "Москва, www.greenatom.ru\n Информационные технологии, системная интеграция, интернет \n Системная интеграция, автоматизации технологических и бизнес-процессов предприятия, ИТ-консалтинг \n Финансовый сектор \n Услуги по ведению бухгалтерского и налогового учета, расчет заработной платы",
+        "position": "Java-разработчик",
+        "legend": "Система управления корпоративным контентом, Система электронного документооборота\nСтек: Java 21, Spring Boot 3.x, PostgreSQL, Elasticsearch, Flyway, minIO, OCR Tesseract, Apache Tika, iTextPDF, JFreeChart, ELK, Docker\nОбязанности:\n- Разработка обработки документов с OCR Tesseract, Apache Tika\n- Настройка индексации данных в Elasticsearch\n- Автоматизация аналитики и отчётности (iTextPDF, JFreeChart)\n- Интеграция minIO для хранения данных\n- Настройка логирования и мониторинга через ELK\nДостижения:\n- Оптимизация индексов Elasticsearch (-21% к задержке)\n- Улучшение диагностики ошибок (-30% к времени поиска)\n- Синхронизация PostgreSQL и Elasticsearch (+ к отказоустойчивости)\n- Внедрение поискового языка (+13% к UX)\n- Улучшение аналитики SaaS (+45% к UX)\nКоманда: 14 человек (6 backend, 1 devops, 7 frontend)\nРабота с frontend (Swagger, API), участие в архитектуре поисковой системы."
+    },
+    {
+        "company": "Seven Winds Studio",
+        "start_date": "2023-09-01",
+        "end_date": "2024-05-01",
+        "company_info": "Красноярск, 7winds.mobi/ • Информационные технологии, системная интеграция, интернет • Разработка программного обеспечения",
+        "position": "Java-разработчик",
+        "legend": "PragmaCore\n\nBackend Developer (Финансовая аналитика):\n- Стек: Kotlin, Ktor, PostgreSQL, Apache POI\n- Написание логики отчетов БДР/БДДС\n- Оптимизация SQL-запросов (PostgreSQL, агрегация)\n- Разработка REST API для Dashboard\n- Серверная генерация Excel-выгрузок (Apache POI)\n- Интеграция с внутренним модулем Resources Module\n\nBackend Developer (Предикативная аналитика):\n- Стек: Python, FastAPI, MongoDB, Pandas/NumPy\n- Исправление ошибок в алгоритмах S-кривых\n- Коррекция формул прогнозирования\n- Разработка API для прогнозов\n- Оптимизация работы с MongoDB"
+    },
+    {
+        "company": "Softline",
+        "start_date": "2022-04-01",
+        "end_date": "2023-09-01",
+        "company_info": "Россия, www.softline.ru • Информационные технологии, системная интеграция, интернет • Разработка программного обеспечения • Системная интеграция, автоматизации технологических и бизнес-процессов предприятия, ИТ-консалтинг",
+        "position": "Java-разработчик",
+        "legend": "Разработка внутренней CRM-системы для автоматизации работы с клиентами и заказами. Система использовалась менеджерами компании для учета заявок, выставления счетов и ведения клиентской базы.\n\nТехнологии: Java 11, Spring Boot, PostgreSQL, Liquibase, Redis, RabbitMQ, Docker, GitLab CI/CD, JUnit, Mockito, Swagger\n\nОсновные задачи:\n- Разработка и доработка REST API, реализация CRUD-операций.\n- Работа с PostgreSQL: написание SQL-запросов, оптимизация индексов, настройка миграций с Liquibase.\n- Оптимизация запросов и рефакторинг бизнес-логики.\n- Написание unit- и интеграционных тестов с JUnit и Mockito.\n- Участие в код-ревью, исправление багов.\n\nКоманда: 3 backend-разработчика, 2 frontend-разработчика, 1 тестировщик, 1 аналитик, 1 тимлид\nРаботали по Kanban, задачи ставились в Jira, код-ревью в GitLab, документация в Confluence."
+    }
+    ],
+    "education": {
+    "higher": true,
+    "items": [
+        {
+        "university": "Донецкий национальный технический университет",
+        "city": "Донецк",
+        "faculty": "Интеллектуальные системы и программирование, Программная инженерия",
+        "end_date": "2021-01-01"
+        }
+    ]
+    },
+    "skills": [
+    "Java", "Liquibase", "Mockito", "REST API", "Apache Maven", "Docker", "Spring Framework",
+    "Gradle", "Git", "Linux", "MongoDB", "PostgreSQL", "Apache Kafka", "Spring Cloud",
+    "SQL", "NoSQL", "Spring Data", "Elasticsearch", "ELK", "Grafana", "Kubernetes",
+    "Agile", "Atlassian Confluence", "Spring Boot", "Flyway", "Swagger",
+    "Микросервисная архитектура", "Jenkins", "Testcontainers"
+    ],
+    "about": "Java Backend разработчик с опытом создания и оптимизации высоконагруженных систем, документооборота и поисковых решений. Уверенно работаю с современным стеком технологий для масштабируемых приложений.\nТакже есть желание для разработки в любой другой сфере, преимущественно Fintech || Medtech.\nКлючевые навыки: Java SE (8, 11, 17, 21), Java EE,Spring Framework:  Boot (REST API, Profiles), Security (JWT, OAuth2), Data JPA/Hibernate, MVC, Spring Cloud Netflix (Eureka, OpenFeign, Gateway), Базы данных: SQL: PostgreSQL, MySQL(Индексы, триггеры, партицирование, оптимизация запросов), Flyway, Liquibase, OCR Tesseract, Apache Tika, iTextPDF, JFreeChart, HTTP/HTTPS (SSL, mTLS), SSH, FTP, Linux-сервера, балансировщики, Bash, Batch, Docker Compose, GitHub Actions, Jenkins pipelines, Prometheus, SOAP, gRPC, Swagger/OpenAPI, Apache Kafka, JUnit, Testcontainers, Mockito, Atlassian Jira, Confluence\nЛичные качества: Самостоятельность и ответственность. Быстрое освоение новых технологий. Ориентация на результат и командную работу. Интерес к исследованию новых подходов и технологий. Работа по Agile, SCRUM, Kanban, Waterfall."
+}

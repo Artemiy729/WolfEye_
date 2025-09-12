@@ -1,0 +1,47 @@
+{
+"fio": {
+    "surname": "",
+    "name": "",
+    "father_name": ""
+},
+"born_date": null,
+"phone": null,
+"residence_city": "Москва",
+"desired_position": "Java-разработчик",
+"experience_years": 4,
+"places": [
+    {
+    "company": "РСХБ-Интех",
+    "start_date": "2022-09-01",
+    "end_date": null,
+    "company_info": "Москва • Информационные технологии, системная интеграция, интернет • Разработка программного обеспечения",
+    "position": "Java-разработчик",
+    "legend": "1. Реализовал микро-сервис создания и валидации кредитных заявок (20+ бизнес-правил) с использованием Spring Boot, Spring MVC.\n2. Интегрировал сервис с CRM через OpenFeign.\n3. Настроил PostgreSQL через Spring Data JPA и Hibernate (15+ сущностей, сложные связи).\n4. Оптимизировал SQL-запросы и индексы (сократил время ответа API на 30%).\n5. Внедрил Kafka-процессинг уведомлений (3 consumer’а и producer’а).\n6. Повысил покрытие тестами до 85% (JUnit 5, Mockito, Testcontainers).\n7. Проводил code review.\nСтек: Java 17, Spring Boot, Spring MVC, Spring Data JPA, Hibernate, PostgreSQL, Kafka, JUnit 5, Mockito, Testcontainers."
+    },
+    {
+    "company": "TELE2 Россия",
+    "start_date": "2021-06-01",
+    "end_date": "2022-08-01",
+    "company_info": "Москва, www.ru.tele2.ru/ • Телекоммуникации, связь • Мобильная связь",
+    "position": "Java-разработчик",
+    "legend": "1. Спроектировал сущности CallLog, SupportRequest, SubscriberProfile с оптимизированными индексами.\n2. Реализовал обработку событий через Kafka (@KafkaListener, DTO).\n3. Повысил покрытие тестами до 87% (JUnit 5, Mockito).\n4. Внедрил обработчик ошибок через @ControllerAdvice.\n5. Провёл рефакторинг DTO/Entity, внедрив MapStruct.\nСтек: Java 11/17, Spring Boot, Spring MVC, Hibernate, PostgreSQL, Kafka, Liquibase, JUnit 5, Mockito."
+    }
+],
+"education": {
+    "higher": false,
+    "items": [
+    {
+        "university": "\"Угреша\" (филиал) Международного университета природы, общества и человека \"Дубна\"",
+        "city": "Дзержинский (Московская область)",
+        "faculty": "Инженер-машиностроения, токарь-фрезеровщик станков с ЧПУ",
+        "end_date": "2020-01-01"
+    }
+    ]
+},
+"skills": [
+    "Java", "Spring Boot", "Spring MVC", "Spring Data", "Hibernate", "PostgreSQL",
+    "Apache Kafka", "Liquibase", "JUnit", "Mockito", "SQL", "Spring Framework",
+    "XML", "REST API", "Spring Web"
+],
+"about": "Middle Java разработчик с 4 годами опыта (РСХБ-Интех — финтех, Tele2 — телеком). Разрабатывал микросервисы на Java 17, Spring Boot, Kafka и PostgreSQL. Оптимизировал SQL-запросы, покрывал код тестами, интегрировал внешние системы. Уверенно работаю в командах, улучшаю архитектуру. Открыт к диалогу, умею слушать, помогать и создавать атмосферу партнёрства.\nАнглийский язык: B (Intermediate).\nИмеется собственный автомобиль, права категории B."
+}

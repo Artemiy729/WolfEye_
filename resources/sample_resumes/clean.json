@@ -1,0 +1,45 @@
+{
+"fio": {
+    "surname": "Иванов",
+    "name": "Алексей",
+    "father_name": "Петрович"
+},
+"born_date": "1997-05-14",
+"phone": "+7-495-123-45-67",
+"residence_city": "Москва",
+"desired_position": "Java-разработчик",
+"experience_years": 6,
+"places": [
+    {
+    "company": "ООО \"ТехСофт\"",
+    "start_date": "2019-07-01",
+    "end_date": "2022-12-31",
+    "company_info": "Москва, разработка ПО",
+    "position": "Java-разработчик",
+    "legend": "Разработка микросервисов на Java/Spring Boot, интеграции с PostgreSQL и Kafka."
+    },
+    {
+    "company": "АО \"ИнфоСистемы\"",
+    "start_date": "2023-01-01",
+    "end_date": null,
+    "company_info": "Москва, системная интеграция",
+    "position": "Java-разработчик",
+    "legend": "Разработка backend API, оптимизация запросов, внедрение CI/CD."
+    }
+],
+"education": {
+    "higher": true,
+    "items": [
+    {
+        "university": "Московский государственный университет имени М.В. Ломоносова",
+        "city": "Москва",
+        "faculty": "Факультет вычислительной математики и кибернетики",
+        "end_date": "2019-06-30"
+    }
+    ]
+},
+"skills": [
+    "Java", "Spring Boot", "PostgreSQL", "Kafka", "Docker", "Kubernetes", "JUnit", "Mockito", "REST API", "Git"
+],
+"about": "Java backend-разработчик с опытом более 6 лет. Специализируюсь на проектировании и поддержке микросервисов, оптимизации запросов и CI/CD."
+}

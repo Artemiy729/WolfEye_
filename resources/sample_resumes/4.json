@@ -1,0 +1,57 @@
+{
+"fio": {
+    "surname": "",
+    "name": "",
+    "father_name": ""
+},
+"born_date": null,
+"phone": null,
+"residence_city": "Москва",
+"desired_position": "Java-разработчик",
+"experience_years": 6,
+"places": [
+    {
+    "company": "TERRALINK",
+    "start_date": "2023-10-01",
+    "end_date": null,
+    "company_info": "Москва • Информационные технологии, системная интеграция, интернет • Интернет-компания (поисковики, платежные системы, соц.сети, информационно-познавательные и развлекательные ресурсы, продвижение сайтов и прочее)",
+    "position": "Senior java developer",
+    "legend": "Проект: ERP система документооборота для разных сфер (финансы, энергетика).\nОбязанности:\n- Интеграции с внутренними системами и внешними сервисами;\n- Полный цикл разработки, включая архитектуру;\n- Собеседования, замещение тимлида;\n- Code review, документация.\nДостижения:\n- Создал систему цепочки ответственности, внедрённую у заказчиков;\n- Быстрая доработка для Национального Узбекского Банка.\nТех стек: Java 17, Spring, Hibernate, Gradle, PostgreSql, Kafka, OpenSearch, ElasticSearch, OpenShift, Swagger, Docker, Docker-compose, Kafka-connect."
+    },
+    {
+    "company": "ООО 'ИТ и К'",
+    "start_date": "2020-07-01",
+    "end_date": "2023-09-01",
+    "company_info": "Санкт-Петербург, www.itctg.ru/ • Информационные технологии, системная интеграция, интернет • Разработка ПО, автоматизация бизнес-процессов",
+    "position": "Middle java developer",
+    "legend": "Проект: ERP система документооборота для ПАО «ГМК Норильский никель».\nОбязанности:\n- Разработка функционала и интеграций;\n- Онбординг новичков;\n- Документация и поддержка легаси.\nДостижения:\n- Система делегирования сотрудников;\n- Система аудита действий;\n- Оптимизация SQL-запроса отчёта в 3 раза.\nТех стек: Java 11, Spring, Hibernate, Maven, GitLab, Oracle."
+    },
+    {
+    "company": "Сбер",
+    "start_date": "2019-06-01",
+    "end_date": "2020-06-30",
+    "company_info": "Москва, rabota.sber.ru/ • Финансовый сектор • Банк",
+    "position": "Junior java developer",
+    "legend": "Проект: внутренняя HR-система бэк-офиса.\nОбязанности:\n- Поддержка функционала;\n- Тестирование кода.\nДостижения:\n- Единое хранилище кадровых данных;\n- Интеграция с 1С.\nТех стек: Java 11, Spring Boot, Postgres, Bitbucket, Jenkins."
+    }
+],
+"education": {
+    "higher": true,
+    "items": [
+    {
+        "university": "Российский экономический университет имени Г.В. Плеханова",
+        "city": "Москва",
+        "faculty": "ИКТ, Техник-программист",
+        "end_date": "2020-01-01"
+    }
+    ]
+},
+"skills": [
+    "Spring Boot", "Hibernate", "ORACLE", "Apache Kafka", "Gradle", "Apache Maven",
+    "Spring Framework", "Hibernate ORM", "OpenShift", "NoSQL", "Elasticsearch",
+    "Swagger", "Mockito", "Docker-compose", "Jenkins", "JUnit", "Clickhouse",
+    "Prometheus", "Grafana", "MongoDB", "Kubernetes", "Java", "SQL", "PostgreSQL",
+    "Git", "Redis", "GitLab CI", "DevOps", "Linux", "Алгоритмы и структуры данных"
+],
+"about": "Привет! Я Senior Backend Developer с 6+ годами опыта в Java/Spring. Люблю сложные задачи и беру ответственность за архитектуру и производительность.\nТех стек:\n- Java 21, Spring, Hibernate, Gradle, PostgreSql, Kafka, OpenSearch, ElasticSearch, OpenShift, Swagger, Docker, Docker-compose, Kafka-connect\n- Java 17, Spring, Hibernate, Maven, Oracle, GitLab\n- Java 11, Spring Boot, Postgres, Bitbucket, Jenkins.\nАнглийский язык — уровень B2 (средне-продвинутый)."
+}

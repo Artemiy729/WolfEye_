@@ -8,10 +8,10 @@ def analyze_company(companies: List[PlaceWork]) -> float:
         companies (List[PlaceWork]): Список компаний.
 
     Returns:
-        float: 1 если компания не указана, 0 если указана.
+        float: 1 если нет указания компаний, 0 если указана хотя бы одна.
     """
     
-    if len(companies) == 2:
-        return 1
+    if len(companies) > 0:
+        return 0
     
-    return 0
+    return 1
