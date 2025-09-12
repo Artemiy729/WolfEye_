@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from app.application.services.fio import analysis_fio, check_fio
+from app.application.services.fio import check_fio
 from app.domain.models import FIOResult, NameParts
 
 
@@ -47,29 +47,27 @@ def test_fio_missing_parts():
 ### Выдуманные но правильные с точки зрения грамматики
 def test_fio_nonexistent_but_correct_full():
     """Несуществующая фамилия, имя, отчество - должно вернуть 6 баллов"""
-    result = analysis_fio(make_fio("Джунешвили Джуниор Джуниорович"))
-    assert result == FIOResult("222")
-    # result = check_fio(make_fio("Джунешвили Джуниор Джуниорович"))
-    # assert result == 1.0
+    result = check_fio(make_fio("Джунешвили Джуниор Джуниорович"))
+    assert result == 1.0
 def test_fio_nonexistent_but_correct_surname():
     """Несуществующие имя, отчество - должно вернуть 4 балла"""
-    result = analysis_fio(make_fio("Ткачёв Сеньер Сеньерович")) ## нужно ли учитывать e| ё
-    assert result == FIOResult("022")
-    # result = check_fio(make_fio("Ткачев Сеньер Сеньерович"))
-    # assert result == 0.8
+    # result = analysis_fio(make_fio("Ткачёв Сеньер Сеньерович")) ## нужно ли учитывать e| ё
+    # assert result == FIOResult("022")
+    result = check_fio(make_fio("Ткачёв Сеньер Сеньерович"))
+    assert result == 0.8
     
 def test_fio_nonexistent_but_correct_name():
     """Тест несуществующих Фамилии, отчества - должны возвращать 4 балла"""
-    result = analysis_fio(make_fio("Коленвал Александр Мидлович"))
-    assert result == FIOResult("202")
-    # result = check_fio(make_fio("Коленвал Александр Мидлович"))
-    # assert result == 0.8
+    # result = analysis_fio(make_fio("Коленвал Александр Мидлович"))
+    # assert result == FIOResult("202")
+    result = check_fio(make_fio("Коленвал Александр Мидлович"))
+    assert result == 0.8
 def test_fio_nonexistent_but_correct_father_name():
     """Тест несуществующих но лексически правильных ФИО - должны возвращать 4 балла"""
-    result = analysis_fio(make_fio("Джунешвили Миддл Александрович"))
-    assert result == FIOResult("220")
-    # result = check_fio(make_fio("Джунешвили Миддл Александрович"))
-    # assert result == 0.8
+    # result = analysis_fio(make_fio("Джунешвили Миддл Александрович"))
+    # assert result == FIOResult("220")
+    result = check_fio(make_fio("Джунешвили Миддл Александрович"))
+    assert result == 0.8
     
 ### С опечатками    
 def test_fio_typos_and_transliteration():
