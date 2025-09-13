@@ -21,11 +21,9 @@ class RefreshResponse(BaseModel):
 
 class CheckResponse(BaseModel):
     id: str
-    email: str
 
 
 class User(BaseModel):
     id: str
     login: str
-    email: str
     password_hash: str

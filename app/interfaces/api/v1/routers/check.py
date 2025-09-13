@@ -1,22 +1,12 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from fastapi import APIRouter, Request, HTTPException, status
 
-from app.infrastructure.db.base import get_db
-from app.interfaces.api.v1.schemas.auth import CheckResponse, User
-from app.interfaces.api.v1.routers.auth import get_current_user
+from app.interfaces.api.v1.schemas.auth import CheckResponse
 
 router = APIRouter(prefix="/check", tags=["check"])
 
 
 @router.get("", response_model=CheckResponse)
-def check_user(
-    current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db)
-):
+def check_user(request: Request):
     """Защищенный эндпоинт для проверки пользователя"""
-    # В ТЗ указано возвращать id и email, но в модели User нет поля email
-    # Возвращаем id и login вместо email
-    return CheckResponse(
-        id=current_user.id,
-        email=current_user.login  # Используем login как email для соответствия ТЗ
-    )
+    # Middleware уже проверил аутентификацию и добавил пользователя в request.state
+    return CheckResponse(id=request.state.current_user.id)

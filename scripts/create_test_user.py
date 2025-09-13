@@ -1,7 +1,7 @@
 import uuid
 from app.infrastructure.db.base import SessionLocal
 from app.infrastructure.db.user_repository import UserModel
-from app.interfaces.api.v1.routers.auth import get_password_hash
+from app.infrastructure.utils.password import get_password_hash
 
 """
 Скрипт для создания тестового пользователя
@@ -20,7 +20,6 @@ def create_test_user():
         user = UserModel(
             id=str(uuid.uuid4()),
             login="test",
-            email="test@example.com",
             password_hash=get_password_hash("test123")
         )
         
@@ -30,7 +29,6 @@ def create_test_user():
         print("Тестовый пользователь создан успешно!")
         print("Логин: test")
         print("Пароль: test123")
-        print("Email: test@example.com")
         
     except Exception as e:
         print(f"Ошибка при создании пользователя: {e}")

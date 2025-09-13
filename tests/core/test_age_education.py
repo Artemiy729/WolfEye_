@@ -1,4 +1,4 @@
-# python -m pytest tests/test_age_education.py -v
+# python -m pytest tests/core/test_age_education.py -v
 # -*- coding: utf-8 -*-
 
 from datetime import date

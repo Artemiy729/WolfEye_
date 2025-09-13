@@ -7,7 +7,7 @@ from app.config import CONFIG
 """
 
 
-DATABASE_URL = CONFIG.get("DB_URL", "postgresql+psycopg2://user:password@localhost:5432/wolfeye")
+DATABASE_URL = CONFIG.get("DB_URL")
 
 engine = create_engine(DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)

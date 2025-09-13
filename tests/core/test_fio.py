@@ -1,4 +1,4 @@
-# python -m pytest tests/test_fio.py -v
+# python -m pytest tests/core/test_fio.py -v
 # -*- coding: utf-8 -*-
 
 import pytest
