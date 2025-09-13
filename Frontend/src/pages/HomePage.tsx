@@ -1,15 +1,11 @@
-import { HomeHero } from '../modules/HomeHero'
-import { BenefitsForWhom } from '../components/BenefitsForWhom'
-import { HowItWorks } from '../components/HowItWorks'
-import { Confidentiality } from '../components/Confidentiality'
+import { LandingHero } from "../modules"
+import { Footer } from "../modules"
 
 export function HomePage() {
   return (
     <>
-      <HomeHero />
-      <BenefitsForWhom />
-      <HowItWorks />
-      <Confidentiality />
+    <LandingHero />
+    <Footer />
     </>
   )
 }

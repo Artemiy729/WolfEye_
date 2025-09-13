@@ -1,24 +1,24 @@
-import { useState, FormEvent } from 'react'
+import type { FormEvent } from 'react'
+import { useState } from 'react'
 import { Button } from '../ui/Button'
 
 interface LoginFormProps {
-  onSubmit?: (data: { email: string; password: string; code: string }) => void
+  onSubmit?: (data: { email: string; password: string;}) => void
 }
 
 export function LoginForm({ onSubmit }: LoginFormProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [code, setCode] = useState('')
   const [error, setError] = useState<string | null>(null)
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
-    if (!email || !password || !code) {
-      setError('Почта, Пароль и Уникальный код обязательны')
+    if (!email || !password) {
+      setError('Почта, Пароль')
       return
     }
     setError(null)
-    onSubmit?.({ email, password, code })
+    onSubmit?.({ email, password })
   }
 
   return (
@@ -44,17 +44,6 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white outline-none focus:ring-2 focus:ring-cyan-500"
           placeholder="••••••••"
-        />
-      </label>
-
-      <label className="block">
-        <span className="block mb-1 text-sm text-gray-300">Уникальный код*</span>
-        <input
-          type="text"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white outline-none focus:ring-2 focus:ring-cyan-500"
-          placeholder="XXXX-XXXX"
         />
       </label>
 

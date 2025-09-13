@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Header } from '../../components/Header'
 import { HeaderSection } from '../../components/HeaderSection'
-import { Modal } from '../../ui/Modal'
+import { Modal } from '../../components/ModalComponent'
 import { BetaRequestForm } from '../../components/BetaRequestForm'
 import { LoginForm } from '../../components/LoginForm'
 
-export function HomeHero() {
+export function LandingHero() {
   const [isBetaOpen, setIsBetaOpen] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const openBeta = () => setIsBetaOpen(true)

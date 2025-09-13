@@ -1,19 +1,19 @@
 import { useState } from 'react'
 import { Container } from '../ui/Container'
-import { Card } from '../ui/Card'
-import { Modal } from '../ui/Modal'
+import { Card } from '../ui/CardForLanding'
+import { Modal } from './ModalComponent'
 
 export function Confidentiality() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <footer className="py-10 text-white border-t border-gray-800/60 bg-gray-900">
+    <footer className="py-10 text-white border-t border-gray-800/60 bg-[#0e1a30]">
       <Container>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="text-2xl font-extrabold tracking-wide">ГЛАЗ ВОЛКА</div>
 
           <nav className="flex flex-col sm:flex-row gap-4 text-gray-300">
-            <button type="button" onClick={() => setIsOpen(true)} className="text-left hover:text-white">
+            <button type="button" onClick={() => setIsOpen(true)} disabled className="text-left text-gray-500 cursor-not-allowed">
               Политика конфиденциальности
             </button>
           </nav>

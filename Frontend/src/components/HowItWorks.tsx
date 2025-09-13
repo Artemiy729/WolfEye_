@@ -1,5 +1,5 @@
 import { Container } from '../ui/Container'
-import { Card } from '../ui/Card'
+import { Card } from '../ui/CardForLanding'
 
 interface StepItem {
   title: string
@@ -7,8 +7,8 @@ interface StepItem {
 }
 
 const steps: StepItem[] = [
-  { title: '1. Загрузка резюме', description: 'Добавьте PDF/Docx или ссылку на профиль.' },
-  { title: '2. Анализ', description: 'Модели выявляют накрутки, пробелы и несостыковки.' },
+  { title: '1.  Выберите вакансию', description: 'Выберите открытую вакансию на hh.' },
+  { title: '2. Анализ', description: 'Модели выявляют накрутки, аномалии и также проверяет легенду.' },
   { title: '3. Отчет', description: 'Получите оценку риска и рекомендации по вопросам.' }
 ]
 

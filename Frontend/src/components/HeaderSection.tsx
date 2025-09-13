@@ -9,14 +9,13 @@ interface HeaderSectionProps {
 export function HeaderSection({ onOpenBeta }: HeaderSectionProps) {
   return (
     <section className="relative overflow-hidden py-16 md:py-24">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gray-900 via-blue-900/20 to-cyan-900/20" />
+      <div className="absolute inset-0 -z-10 bg-[#0e1a30]" />
 
       <Container>
-        <div className="max-w-5xl mx-0">
+        <div className="max-w-3xl mx-0">
           <TextBlock
-              title="Найдите лучших IT специалистов без накруток"
-              subtitle='PDF-ки или ссылки на hh → рейтинг, red‑флаги и вопросы за 1 минуту.'
-              content="Попробуйте демо: выявляем накрутки, подсвечиваем риски, даём вопросы для верификации."
+            title="Найдите лучших сотрудников без накруток"
+            content="Загрузите резюме для анализа накруток и рекомендаций. Попробуйте демо: выявляем накрутки, подсвечиваем риски, даём вопросы для верификации."
           />
 
           <div className="mt-8">

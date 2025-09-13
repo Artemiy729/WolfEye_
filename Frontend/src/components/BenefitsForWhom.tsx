@@ -1,5 +1,5 @@
 import { Container } from '../ui/Container'
-import { Card } from '../ui/Card'
+import { Card } from '../ui/CardForLanding'
 
 interface AudienceItem {
   title: string
@@ -12,11 +12,13 @@ const audience: AudienceItem[] = [
   { title: 'Основатели/CEO', description: 'Снижение рисков найма и экономия бюджета.' }
 ]
 
+const forWhom: string = "Кому может быть полезно?"
+
 export function BenefitsForWhom() {
   return (
     <section className="py-16 text-white">
       <Container>
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">Кому может быть полезно</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8">{forWhom}</h2>
 
         <div className="grid gap-6 md:grid-cols-3">
           {audience.map((item) => (
