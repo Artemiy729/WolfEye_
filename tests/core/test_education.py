@@ -1,3 +1,6 @@
+# python -m pytest tests/core/test_education.py -v
+# -*- coding: utf-8 -*-
+
 import pytest
 from datetime import date, timedelta
 from app.application.services.education import (

@@ -21,7 +21,7 @@ def _calculate_suspicion_score(fio_result: FIOResult) -> float:
 
 
 
-def analysis_fio(data: NameParts) -> FIOResult: ## вернуть приватность
+def _analysis_fio(data: NameParts) -> FIOResult:
     """Анализирует ФИО с помощью LLM.
     Args:
         data: Фамилия, имя, отчество
@@ -57,7 +57,7 @@ def analysis_fio(data: NameParts) -> FIOResult: ## вернуть приватн
 
 
 def check_fio(data: NameParts) -> float:
-    fio_result = analysis_fio(data) ## вернуть приватность
+    fio_result = _analysis_fio(data)
     return _calculate_suspicion_score(fio_result)
 
 

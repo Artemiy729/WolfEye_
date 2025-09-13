@@ -1,6 +1,8 @@
-### Проверка исправления визуальной подмены
+# python -m pytest tests/core/test_translit.py -v
+# -*- coding: utf-8 -*-
+
 from app.application.services.translit import change_to_normal
-from tests.test_fio import make_fio
+from .test_fio import make_fio
 
 
 def test_visual_substitution_correction():
